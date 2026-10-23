@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LifePilot — AI workspace</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand-row">
+      <div class="brand-mark">✦</div>
+      <div class="brand-name">lifepilot<span>PERSONAL AI</span></div>
+      <button class="icon-button sidebar-toggle" id="sidebar-toggle" title="Toggle sidebar">◫</button>
+    </div>
+    <button class="new-thread" id="new-chat"><span>＋</span> New thread</button>
+    <div class="section-label">YOUR CONVERSATIONS</div>
+    <div class="conversation-list" id="conversation-list">
+      <button class="conversation active" data-conversation="current"><strong>New chat</strong><span>LifePilot</span></button>
+    </div>
+    <div class="sidebar-bottom">
+      <div class="connection"><i></i> Local assistant connected</div>
+      <button class="settings-button" id="settings-button">⚙ <span>Settings</span><small>Local</small></button>
+    </div>
+  </aside>
+
+  <main class="main-area">
+    <header class="topbar">
+      <div class="page-title" id="page-title">New chat</div>
+      <nav class="top-tabs">
+        <button class="top-tab active" id="tab-chat">Chat</button>
+        <button class="top-tab" id="tab-documents">Documents <span class="tab-count" id="doc-count">0</span></button>
+        <button class="icon-button" id="more-button" title="More options">•••</button>
+      </nav>
+    </header>
+
+    <section class="chat-view" id="chat-view">
+      <div class="welcome" id="welcome">
+        <div class="welcome-symbol">✦</div>
+        <h1>How can I help you today?</h1>
+        <p>A thought, a question, or something to remember.</p>
+      </div>
+
+      <div class="chat-log" id="chat-log" aria-live="polite"></div>
+
+      <div class="composer-wrap">
+        <form class="composer" id="chat-form">
+          <textarea id="chat-input" rows="1" placeholder="Send a message..." aria-label="Send a message"></textarea>
+          <div class="composer-toolbar">
+            <div class="composer-tools">
+              <button class="tool-button" type="button" id="attach-button" title="Attachments">＋</button>
+              <button class="tool-button sparkle" type="button" title="AI assistant">✧</button>
+              <span class="toolbar-divider"></span>
+              <button class="model-select" type="button" id="model-button">LifePilot AI <span>⌄</span></button>
+              <span class="toolbar-divider"></span>
+              <button class="model-select" type="button" id="mode-button">Assistant <span>⌄</span></button>
+            </div>
+            <div class="composer-tools">
+              <button class="tool-button" type="button" title="Web search (prototype)" id="web-button">◎</button>
+              <button class="tool-button" type="button" title="Voice (coming soon)" id="voice-button">♩</button>
+              <button class="send-button" type="submit" aria-label="Send message">↑</button>
+            </div>
+          </div>
+        </form>
+        <div class="quick-actions">
+          <button data-prompt="Show my tasks">Manage my tasks</button>
+          <button data-prompt="Make a study plan">Plan my day</button>
+          <button data-prompt="Add task to practice Python with high priority">Remember a task</button>
+          <button data-prompt="What can you help me with?">What can you do?</button>
+        </div>
+        <div class="privacy-note"><span>♧</span> Private session <span class="note-dot">·</span> Tasks and chat stored locally</div>
+      </div>
+    </section>
+
+    <section class="documents-view hidden" id="documents-view">
+      <div class="documents-heading">
+        <div><div class="eyebrow">YOUR WORKSPACE</div><h1>Tasks &amp; notes</h1><p>Keep the important things in one place.</p></div>
+        <span class="local-badge"><i></i> Stored locally</span>
+      </div>
+      <div class="documents-grid">
+        <section class="document-card">
+          <div class="card-heading"><div><span class="eyebrow">TASK MANAGER</span><h2>My tasks</h2></div><button id="refresh-tasks" class="text-button">Refresh ↻</button></div>
+          <form class="task-form" id="task-form">
+            <input id="task-title" type="text" placeholder="Add a task..." autocomplete="off" aria-label="Task title">
+            <select id="task-priority" aria-label="Task priority"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select>
+            <button class="add-button" type="submit">＋</button>
+          </form>
+          <div id="task-list" class="task-list"></div>
+          <div class="task-summary" id="task-summary">0 tasks · 0 done</div>
+        </section>
+        <section class="document-card assistant-tip">
+          <div class="tip-icon">✦</div><span class="eyebrow">WORK WITH LIFEPILOT</span>
+          <h2>A little clarity goes a long way.</h2>
+          <p>Tell LifePilot what you're working on and it can organize tasks or suggest a simple study plan.</p>
+          <button class="primary-button" id="back-to-chat">Return to chat <span>→</span></button>
+        </section>
+      </div>
+    </section>
+    <footer class="app-footer">LifePilot <span>·</span> Your personal AI workspace <span>·</span> Local prototype</footer>
+  </main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>
